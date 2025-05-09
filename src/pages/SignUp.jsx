@@ -107,7 +107,7 @@ const SignUp = () => {
             { name: "email", type: "email", placeholder: "Enter your email" },
             { name: "password", type: "password", placeholder: "Enter your password" },
             { name: "hotelName", type: "text", placeholder: "Enter your hotel name" },
-            { name: "hotelId", type: "text", placeholder: "Enter your hotel ID" },
+           
           ]}
         />
       )}

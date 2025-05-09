@@ -14,6 +14,7 @@ export const Orders = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [showModal, setShowModal] = useState(false);
   const [hotelId, setHotelId] = useState(null);
+ const [user, setUser] = useState();
   const [newOrder, setNewOrder] = useState({
     customerName: '',
     itemName: '',
@@ -24,7 +25,9 @@ export const Orders = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user?.hotelId) {
+      setUser(user);
       setHotelId(user.hotelId);
+
        // ✅ fetch orders when hotelId is ready
     }
   }, []);
@@ -36,6 +39,8 @@ export const Orders = () => {
       await axios.post('http://localhost:5000/api/orders/create', {
         ...newOrder,
         hotelId,
+        customerName: user?.hotelName
+
       });
       setShowModal(false);
       setNewOrder({ customerName: '', itemName: '', quantity: 1 });
@@ -198,7 +203,7 @@ export const Orders = () => {
                   filteredOrders.map((order) => (
                     <tr key={order._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4">
-                        <div className="text-lg font-medium text-gray-900">Customer {order.customerName}</div>
+                        <div className="text-lg font-medium text-gray-900"> {order.customerName}</div>
                         <div className="text-xs text-gray-500">Hotel: {order.hotelId}</div>
                       </td>
                       <td className="px-6 py-4">
@@ -253,11 +258,7 @@ export const Orders = () => {
             </button>
             <h2 className="text-xl font-bold mb-4">New Order</h2>
             <div className="space-y-4">
-              <Input
-                placeholder="Customer Name"
-                value={newOrder.customerName}
-                onChange={(e) => setNewOrder({ ...newOrder, customerName: e.target.value })}
-              />
+             
               <Input
                 placeholder="Item Name"
                 value={newOrder.itemName}

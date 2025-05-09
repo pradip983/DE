@@ -7,7 +7,7 @@ import { Inventory } from './pages/Inventory';
 import { Hotels } from './pages/Hotels';
 import { Transfers } from './pages/Transfers';
 import { AppProvider } from './context/AppContext';
-import SignUp from './pages/Signup';
+import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import { Toaster } from "react-hot-toast";
 
