@@ -38,6 +38,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vasanpradip06:vasan51
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // ✅ API Routes
+app.use('/api', () => {
+  console.log(`index file execute`);
+});
 app.use('/api/orders', ordersRouter);
 app.use('/api/inventory', inventoryRouter);
 app.use('/api/hotels', hotelsRouter);
