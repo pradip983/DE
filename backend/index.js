@@ -31,7 +31,7 @@ app.options('*', cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'your-default-uri')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vasanpradip06:vasan51645@cluster0.mdlqm.mongodb.net/hotel-food-management')
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
