@@ -2,8 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+
 
 import ordersRouter from './routes/orders.js';
 import inventoryRouter from './routes/inventory.js';
@@ -13,8 +12,7 @@ import userRouter from './routes/user.js';
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 
 const app = express();
 
