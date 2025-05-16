@@ -46,13 +46,7 @@ app.use('/api/hotels', hotelsRouter);
 app.use('/api/transfers', transfersRouter);
 app.use('/api/user', userRouter);
 
-// Serve frontend (optional)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(join(__dirname, '../dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, '../dist/index.html'));
-  });
-}
+
 
 // ✅ Export handler for Vercel
 export default app;
