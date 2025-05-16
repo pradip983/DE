@@ -17,29 +17,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
-// ✅ Proper CORS setup
-const corsOptions = {
-  origin: 'http://localhost:5173', // Adjust this to your frontend URL if different
+// CORS config
+app.use(cors({
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // optional if you're using cookies/auth headers
-};
+  credentials: true
+}));
+app.options('*', cors());
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Handle preflight for all routes
-
+// Middleware
 app.use(express.json());
 
-// ✅ MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vasanpradip06:vasan51645@cluster0.mdlqm.mongodb.net/hotel-food-management')
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'your-default-uri')
   .then(() => console.log('✅ Connected to MongoDB'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  .catch(err => console.error('❌ MongoDB error:', err));
 
-// ✅ API Routes
-app.use('/api', () => {
+// Routes
+app.use('/api', (req, res, next) => {
   console.log(`index file execute`);
+  next();
 });
 app.use('/api/orders', ordersRouter);
 app.use('/api/inventory', inventoryRouter);
@@ -47,7 +46,7 @@ app.use('/api/hotels', hotelsRouter);
 app.use('/api/transfers', transfersRouter);
 app.use('/api/user', userRouter);
 
-// ✅ Serve static files in production
+// Serve frontend (optional)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '../dist')));
   app.get('*', (req, res) => {
@@ -55,7 +54,5 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// ✅ Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// ✅ Export handler for Vercel
+export default app;
