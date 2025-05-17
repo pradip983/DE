@@ -11,7 +11,7 @@ export const ConnectHotelModal = ({ isOpen, onClose, fetchhotels, fetchOrders })
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/hotels/connect", {
+      const res = await axios.post("https://de-6not.vercel.app/api/hotels/connect", {
         hotelId: ourHotelId,
         connectWithId: otherHotelId,
       });
