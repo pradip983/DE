@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://de-6not.vercel.app/api"; 
+const API_URL = "https://de-uopl.vercel.app/api"; 
 
 export const gethotels = async (id) => {
     try {
