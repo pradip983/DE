@@ -44,7 +44,8 @@ app.use('/api/hotels', hotelsRouter);
 app.use('/api/transfers', transfersRouter);
 app.use('/api/user', userRouter);
 
-
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
 // ✅ Export handler for Vercel
 export default app;
