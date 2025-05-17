@@ -18,7 +18,7 @@ const app = express();
 
 // CORS config
 app.use(cors({
-  origin: 'https://de-red.vercel.app',
+  origin: 'https://hotel-invsys.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
