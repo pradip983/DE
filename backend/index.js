@@ -38,7 +38,7 @@ app.use('/api/transfers', transfersRouter);
 app.use('/api/user', userRouter);
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vasanpradip06:vasan51645@cluster0.mdlqm.mongodb.net/hotel-food-management', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://vasanpradip06:vasan97147@cluster0.mdlqm.mongodb.net/hotel-food-management', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
