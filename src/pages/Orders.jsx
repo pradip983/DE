@@ -36,7 +36,7 @@ export const Orders = () => {
     if (!hotelId) return;
 
     try {
-      await axios.post('http://localhost:5000/api/orders/create', {
+      await axios.post('https://de-6not.vercel.app/api/orders/create', {
         ...newOrder,
         hotelId,
         customerName: user?.hotelName
@@ -56,7 +56,7 @@ export const Orders = () => {
     if (!orderId) return;
     try {
       
-     const res =  await axios.delete(`http://localhost:5000/api/orders/delete/${orderId}`);
+     const res =  await axios.delete(`https://de-6not.vercel.app/api/orders/delete/${orderId}`);
              console.log(res.data);
       fetchOrders(); // refresh orders
      
@@ -73,7 +73,7 @@ export const Orders = () => {
     if (!hotelId) return;
     console.log('Hotel ID:', hotelId);
     try {
-      const response = await axios.post(`http://localhost:5000/api/orders/${orderId}/fulfill`,{hotelId});
+      const response = await axios.post(`https://de-6not.vercel.app/api/orders/${orderId}/fulfill`,{hotelId});
       console.log(response.data);
       toast.success('Order fulfilled successfully');
       fetchOrders(); 
